@@ -4,12 +4,16 @@
 \alias{AveragingCausalHD}
 \title{Estimate the average treatment effect while adjusting for a high dimensional set of covariates}
 \usage{
-AveragingCausalHD(y, t, x,
+AveragingCausalHD(
+  y,
+  t,
+  x,
   estimators = c("DoublePS", "DRlasso", "Debiasing", "DML", "DMLpost_selection",
     "TMLElasso", "TMLEscreen", "HDmatching"),
   AdditionalEstimates = NULL,
   AdditionalSEs = NULL,
-  trim = FALSE)
+  trim = FALSE
+)
 }
 \arguments{
 \item{y}{The outcome to be analyzed}
