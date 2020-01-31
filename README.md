@@ -77,3 +77,14 @@ AveragingCausalHD(y=y, t=t, x=x,
 ```
 
 The HDbayes and HDC estimators might take longer to fit as they are Bayesian approaches, so they can be removed if computation time is a concern. 
+
+### Adding user-specified estimators
+
+If the user has their own estimates of the treatment effect that they would like to enter into the averaging estimator, this can be done using the AdditionalEstimates and AdditionalSEs arguments. Both must be specified in order for this to work. Let's suppose that I had an estimate of the treatment effect of 1.1 with a corresponding standard error estimate of 0.25. I could couple this with the estimators already in AveragingCausalHD as follows:
+
+
+```{r, eval=FALSE}
+AveragingCausalHD(y=y, t=t, x=x,
+                  AdditionalEstimates = 1.1,
+                  AdditionalSEs = 0.25)
+```
