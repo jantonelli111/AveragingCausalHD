@@ -2,7 +2,7 @@
 % Please edit documentation in R/Main.R
 \name{AveragingCausalHD}
 \alias{AveragingCausalHD}
-\title{Estimate effects of repeated exposures using distributed lag models}
+\title{Estimate the average treatment effect while adjusting for a high dimensional set of covariates}
 \usage{
 AveragingCausalHD(
   y,
@@ -45,12 +45,12 @@ A list with the estimates and standard errors from each individual estimator, as
         from the averaged estimator, which combines all of the individual estimators
 }
 \description{
-Estimate effects of repeated exposures using distributed lag models
+Estimate the average treatment effect while adjusting for a high dimensional set of covariates
 }
 \examples{
 
-n = 100
-p= 100
+n <- 100
+p <- 100
 
 beta.c <- c(0.75,1, 0.6, -0.8, -0.7,rep(0, p-5))
 
@@ -58,10 +58,10 @@ gamma <- c(0.15,0.2,0, 0, -0.4, rep(0, p-5))
 
 beta <- 1
 
-sigma = matrix(0.3, p,p)
-diag(sigma) = 1
+sigma <- matrix(0.3, p,p)
+diag(sigma) <- 1
 
-x = mvtnorm::rmvnorm(n, sigma=sigma)
+x <- mvtnorm::rmvnorm(n, sigma=sigma)
 t <- as.numeric((x \%*\% gamma + rnorm(n)) > 0)
 y <- 0 + t + x \%*\% beta.c + rnorm(n, sd=1)
 

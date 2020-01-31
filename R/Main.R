@@ -28,8 +28,8 @@
 #' @export
 #' @examples
 #'
-#' n = 100
-#' p= 100
+#' n <- 100
+#' p <- 100
 #' 
 #' beta.c <- c(0.75,1, 0.6, -0.8, -0.7,rep(0, p-5))
 #' 
@@ -37,16 +37,16 @@
 #' 
 #' beta <- 1
 #' 
-#' sigma = matrix(0.3, p,p)
-#' diag(sigma) = 1
+#' sigma <- matrix(0.3, p,p)
+#' diag(sigma) <- 1
 #' 
-#' x = mvtnorm::rmvnorm(n, sigma=sigma)
+#' x <- mvtnorm::rmvnorm(n, sigma=sigma)
 #' t <- as.numeric((x %*% gamma + rnorm(n)) > 0)
 #' y <- 0 + t + x %*% beta.c + rnorm(n, sd=1)
 #' 
 #' AveragingCausalHD(y=y, t=t, x=x)
 
-AveragingCausalHD = function(y, t, x, estimators = c("DoublePS", "DRlasso", "Debiasing",
+AveragingCausalHD = function(y,t,x,estimators = c("DoublePS", "DRlasso", "Debiasing",
                                     "DML", "DMLpost_selection", "TMLElasso",
                                     "TMLEscreen", "HDmatching"),
                      AdditionalEstimates = NULL, AdditionalSEs = NULL,
