@@ -51,7 +51,7 @@ y <- 0 + t + x %*% beta.c + rnorm(n, sd=1)
 And now that we have the data, we can apply the main function as follows:
 
 ```{r, eval=FALSE}
-results = AveragingCausalHD(y=y, t=t, x=x)
+results <- AveragingCausalHD(y=y, t=t, x=x)
 ```
 
 The main estimator results can be found with the following command
