@@ -11,7 +11,22 @@ install_github(repo = "jantonelli111/AveragingCausalHD")
 library(AveragingCausalHD)
 ```
 
-# How to use the software
+### Installing other packages
+Some of the individual estimators used in the averaging require their own set of R packages. The AveragingCausalHD function will still work if these functions are not installed or loaded, as it will simply drop any estimators that do not have the required packages loaded. Most estimators simply rely on existing CRAN packages such as glmnet, which should install automatically when AveragingCausalHD is loaded. Three estimators, however, rely on their own R packages which are available on Github. If you want to use these three estimators, then you can use the following line of code to install and load them.
+
+```
+library(devtools)
+install_github(repo = "jantonelli111/DoublyRobustHD")
+library(DoublyRobustHD)
+
+install_github(repo = "jantonelli111/HDconfounding")
+library(HDconfounding)
+
+install_github("swager/balanceHD")
+library(balanceHD)
+```
+
+### How to use the software
 
 The software estimates the average treatment effect of a binary treatment on a continuous outcome while adjusting for a potentially high-dimensional set of covariates. The software has 10 built in estimators for estimating the treatment effect, and then combines the individual estimators to provide a more robust estimate of the treatment effect. First, we need to simulate data for this scenario
 
@@ -37,4 +52,15 @@ And now that we have the data, we can apply the main function as follows:
 
 ```{r, eval=FALSE}
 results = AveragingCausalHD(y=y, t=t, x=x)
+```
+
+The main estimator results can be found with the following command
+```{r, eval=FALSE}
+results$averaged
+```
+
+If the individual estimator results are also of interest, then the following command will show them
+
+```{r, eval=FALSE}
+results$individual_estimators
 ```
