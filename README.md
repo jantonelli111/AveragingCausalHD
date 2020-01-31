@@ -64,3 +64,16 @@ If the individual estimator results are also of interest, then the following com
 ```{r, eval=FALSE}
 results$individual_estimators
 ```
+
+### Specifying which estimators to use
+
+If not specified, then the averaged estimator will use all estimators that do not rely on MCMC to save computation time. If the full set of 10 estimators is desired, this can be specified as
+
+```{r, eval=FALSE}
+AveragingCausalHD(y=y, t=t, x=x,
+                estimators = c("DoublePS", "DRlasso", "Debiasing",
+                               "DML", "DMLpost_selection", "TMLElasso",
+                               "TMLEscreen","HDmatching", "HDbayes", "HDC"))
+```
+
+The HDbayes and HDC estimators might take longer to fit as they are Bayesian approaches, so they can be removed if computation time is a concern. 
